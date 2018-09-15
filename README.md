@@ -1,4 +1,4 @@
-# Insta Quest ![](https://img.shields.io/badge/godot-3.1(alpha)-blue.svg)
+# ![icon](assets/textures/ui/icons/insta-e-16.png) Insta Quest ![](https://img.shields.io/badge/godot-3.1(alpha)-blue.svg)
 
 > A Game made for [LOWREZJAM](https://itch.io/jam/lowrezjam-2018/rate/291828) and [A Game By Its Cover](https://itch.io/jam/a-game-by-its-cover-2018/rate/291828).
 
