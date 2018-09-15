@@ -1,0 +1,144 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/minigames/SelfieStickMiniGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/comments/maji-good.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/comments/maji-bad.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/labels/manji.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/ui/wallpaper.png" type="Texture" id=6]
+[ext_resource path="res://assets/textures/minigames/maji-manji/kpp.png" type="Texture" id=7]
+[ext_resource path="res://game/gameplay/Rect.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/textures/minigames/maji-manji/cel-bg.png" type="Texture" id=9]
+[ext_resource path="res://assets/textures/minigames/maji-manji/cel.png" type="Texture" id=10]
+[ext_resource path="res://assets/textures/minigames/maji-manji/kpp-maji.png" type="Texture" id=11]
+
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "minigame"
+length = 6.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:take_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="SelfieStickMiniGame" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+base_likes = 3460
+time_bonus = 600
+hint = "Enframe!"
+notify_icon = 1
+good_comment = ExtResource( 3 )
+bad_comment = ExtResource( 4 )
+take_enabled = false
+camera_ = false
+unique_name = "SelfieStickMiniGame"
+
+[node name="Margin" parent="." index="0"]
+enabled = false
+
+[node name="マジ卍" type="Sprite" parent="Labels" index="0"]
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="Animation" parent="." index="2"]
+anims/minigame = SubResource( 1 )
+
+[node name="Bg" type="Sprite" parent="." index="3"]
+position = Vector2( -4, -26 )
+z_index = -2
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility", "Z Index" ]
+
+[node name="Girl" type="Node2D" parent="." index="4"]
+position = Vector2( 28, 17 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Sprite" type="Sprite" parent="Girl" index="0"]
+texture = ExtResource( 7 )
+centered = false
+region_enabled = true
+region_rect = Rect2( 0, 0, 8, 23 )
+_sections_unfolded = [ "Offset", "Region", "Transform" ]
+
+[node name="Rect" parent="Girl" index="1" instance=ExtResource( 8 )]
+margin_left = 2.0
+margin_top = 3.0
+margin_right = 6.0
+margin_bottom = 7.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="SelfieStick" type="Node2D" parent="." index="5"]
+position = Vector2( 25, 22 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Bg" type="Sprite" parent="SelfieStick" index="0"]
+show_behind_parent = true
+z_index = -1
+texture = ExtResource( 9 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility", "Z Index" ]
+
+[node name="Sprite" type="Sprite" parent="SelfieStick" index="1"]
+position = Vector2( 7, 11 )
+texture = ExtResource( 10 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="SelfieStickPoint" type="Position2D" parent="SelfieStick" index="2"]
+position = Vector2( 8, 21 )
+scale = Vector2( 1, 0.634011 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="ScreenRect" parent="SelfieStick" index="3" instance=ExtResource( 8 )]
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 13.0
+margin_bottom = 18.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="PhoneRect" parent="SelfieStick" index="4" instance=ExtResource( 8 )]
+margin_right = 14.0
+margin_bottom = 22.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Rect" parent="SelfieStick" index="5" instance=ExtResource( 8 )]
+margin_left = 1.0
+margin_top = 4.0
+margin_right = 13.0
+margin_bottom = 17.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="TakeBg" type="ColorRect" parent="." index="6"]
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.133333, 0.180392, 0.32549, 1 )
+
+[node name="GoodTake" type="Sprite" parent="." index="7"]
+visible = false
+texture = ExtResource( 11 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+

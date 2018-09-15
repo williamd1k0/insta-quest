@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/textures/ui/menu-focus2-16.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/ui/menu-focus1-16.png" type="Texture" id=2]
+[ext_resource path="res://game/ui/HomeButton.gd" type="Script" id=3]
+[ext_resource path="res://game/ui/MenuSfx.tscn" type="PackedScene" id=4]
+
+
+
+[sub_resource type="AnimatedTexture" id=1]
+
+flags = 0
+frames = 2
+fps = 4.0
+frame_0/texture = ExtResource( 2 )
+frame_0/delay_sec = 0.0
+frame_1/texture = ExtResource( 1 )
+frame_1/delay_sec = 0.0
+_sections_unfolded = [ "Frame 0", "Frame 1" ]
+
+[node name="Button16x16" type="TextureButton"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 48.0
+margin_right = 64.0
+margin_bottom = 16.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 9
+toggle_mode = false
+enabled_focus_mode = 2
+shortcut = null
+group = null
+texture_normal = ExtResource( 1 )
+texture_focused = SubResource( 1 )
+script = ExtResource( 3 )
+_sections_unfolded = [ "Textures" ]
+icon_8x8 = null
+icon_16x16 = null
+app_name = null
+color = null
+app_scene = null
+
+[node name="MenuSfx" parent="." instance=ExtResource( 4 )]
+parent_mode = 3
+

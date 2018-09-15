@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://game/gameplay/MiniGameManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/textures/ui/icons/insta-e-8.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/minigames/notify-dpad.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/minigames/notify-take.png" type="Texture" id=4]
+[ext_resource path="res://game/gameplay/CameraOverlay.tscn" type="PackedScene" id=5]
+[ext_resource path="res://game/gameplay/InstaPost.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/ui/Notify.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/gameplay/PostSfx.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/music/music.ogg" type="AudioStream" id=9]
+
+[node name="MiniGameManager" type="Node2D"]
+script = ExtResource( 1 )
+minigame_test = "res://game/gameplay/minigames/RestaurantMenuMiniGame.tscn"
+debug_ = true
+app_icon = ExtResource( 2 )
+dpad_icon = ExtResource( 3 )
+take_icon = ExtResource( 4 )
+
+[node name="Minigame" type="Node2D" parent="."]
+
+[node name="Overlay" type="CanvasLayer" parent="."]
+layer = 2
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="CameraOverlay" parent="Overlay" instance=ExtResource( 5 )]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="InstaPost" parent="Overlay" instance=ExtResource( 6 )]
+visible = false
+margin_right = 64.0
+margin_bottom = 64.0
+
+[node name="Notify" parent="Overlay" instance=ExtResource( 7 )]
+
+[node name="PostSfx" parent="." instance=ExtResource( 8 )]
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = true
+stream_paused = false
+mix_target = 0
+bus = "Music"
+

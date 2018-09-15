@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/esc.ogg-88b172af3ab186177ed1b8dd04f2759e.oggstr"
+
+[deps]
+
+source_file="res://assets/sfx/esc.ogg"
+dest_files=[ "res://.import/esc.ogg-88b172af3ab186177ed1b8dd04f2759e.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

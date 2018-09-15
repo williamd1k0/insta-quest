@@ -1,0 +1,67 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/comments/reptile-good.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/comments/reptile-bad.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/ui/wallpaper.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/minigames/reptile/reptile-flying.png" type="Texture" id=5]
+
+
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "extends \"res://game/gameplay/minigames/MiniGameBase.gd\"
+
+var capture_range = [2.18, 2.32]
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	._ready()
+
+func take_input():
+	var anim_pos = $Animation.current_animation_position
+	good_take = anim_pos >= capture_range[0] and anim_pos <= capture_range[1]
+	.take_input()
+"
+
+[sub_resource type="Animation" id=2]
+
+length = 3.0
+loop = false
+step = 0.01
+tracks/0/type = "value"
+tracks/0/path = NodePath("Reptile:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.61, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 157, -66 ), Vector2( 157, -66 ), Vector2( -121, 131 ) ]
+}
+
+[node name="ReptileMiniGame" index="0" instance=ExtResource( 1 )]
+script = SubResource( 1 )
+_sections_unfolded = [ "Pause", "Script" ]
+good_comment = ExtResource( 2 )
+bad_comment = ExtResource( 3 )
+
+[node name="Marign" parent="." index="0"]
+enabled = false
+
+[node name="Animation" parent="." index="2"]
+anims/minigame = SubResource( 2 )
+
+[node name="Bg" type="Sprite" parent="." index="3"]
+position = Vector2( -4, -36 )
+texture = ExtResource( 4 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="Reptile" type="Sprite" parent="." index="4"]
+position = Vector2( 157, -66 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+

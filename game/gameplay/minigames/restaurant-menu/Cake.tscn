@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/restaurant-menu/MenuItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/textures/minigames/restaurant-menu/cake-min.png" type="Texture" id=2]
+[ext_resource path="res://assets/textures/minigames/restaurant-menu/cake.png" type="Texture" id=3]
+
+[node name="Cake" index="0" instance=ExtResource( 1 )]
+texture = ExtResource( 2 )
+item_name = "Cake"
+item_picture = ExtResource( 3 )
+
+[node name="Name" parent="." index="0"]
+margin_left = 15.0
+margin_right = 63.0
+text = "Cake"
+

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/textures/ui/scroll-up.png" type="Texture" id=1]
+[ext_resource path="res://assets/textures/ui/scroll-down.png" type="Texture" id=2]
+[ext_resource path="res://assets/fonts/pixelated.tres" type="DynamicFont" id=3]
+[ext_resource path="res://game/ui/ScrollText.gd" type="Script" id=4]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+
+[sub_resource type="Theme" id=1]
+
+default_font = ExtResource( 3 )
+RichTextLabel/colors/default_color = Color( 0.878431, 0.878431, 0.878431, 1 )
+RichTextLabel/colors/font_color_selected = Color( 0.490196, 0.490196, 0.490196, 1 )
+RichTextLabel/colors/font_color_shadow = Color( 0, 0, 0, 0 )
+RichTextLabel/colors/selection_color = Color( 0.1, 0.1, 1, 0.8 )
+RichTextLabel/constants/line_separation = 0
+RichTextLabel/constants/shadow_as_outline = 0
+RichTextLabel/constants/shadow_offset_x = 1
+RichTextLabel/constants/shadow_offset_y = 1
+RichTextLabel/constants/table_hseparation = 3
+RichTextLabel/constants/table_vseparation = 3
+RichTextLabel/fonts/bold_font = null
+RichTextLabel/fonts/bold_italics_font = null
+RichTextLabel/fonts/italics_font = null
+RichTextLabel/fonts/mono_font = null
+RichTextLabel/fonts/normal_font = null
+RichTextLabel/styles/focus = null
+RichTextLabel/styles/normal = null
+VScrollBar/icons/decrement = ExtResource( 1 )
+VScrollBar/icons/decrement_highlight = ExtResource( 1 )
+VScrollBar/icons/increment = ExtResource( 2 )
+VScrollBar/icons/increment_highlight = ExtResource( 2 )
+VScrollBar/styles/grabber = SubResource( 2 )
+VScrollBar/styles/grabber_highlight = SubResource( 2 )
+VScrollBar/styles/grabber_pressed = SubResource( 2 )
+VScrollBar/styles/scroll = SubResource( 2 )
+VScrollBar/styles/scroll_focus = SubResource( 2 )
+_sections_unfolded = [ "Resource", "RichTextLabel", "RichTextLabel/colors", "RichTextLabel/constants", "RichTextLabel/fonts", "RichTextLabel/styles", "RichTextLabel/styles/focus", "VScrollBar", "VScrollBar/icons", "VScrollBar/styles" ]
+
+[node name="ScrollText" type="RichTextLabel"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = true
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+theme = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Scrollable text."
+visible_characters = -1
+percent_visible = 1.0
+meta_underlined = true
+tab_size = 4
+text = "Scrollable text."
+scroll_active = true
+scroll_following = false
+selection_enabled = false
+override_selected_font_color = false
+script = ExtResource( 4 )
+_sections_unfolded = [ "BBCode", "Material", "Rect" ]
+
+[connection signal="meta_clicked" from="." to="." method="_on_meta_clicked"]

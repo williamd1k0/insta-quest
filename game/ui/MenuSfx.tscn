@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://assets/sfx/esc.ogg" type="AudioStream" id=1]
+[ext_resource path="res://assets/sfx/menu_move.ogg" type="AudioStream" id=2]
+[ext_resource path="res://assets/sfx/menu_select.ogg" type="AudioStream" id=3]
+[ext_resource path="res://game/ui/MenuSfx.gd" type="Script" id=4]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "back"
+length = 0.3
+loop = false
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 1 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=2]
+
+length = 0.2
+loop = false
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 2 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[sub_resource type="Animation" id=3]
+
+length = 0.4
+loop = false
+step = 0.01
+tracks/0/type = "audio"
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 3 )
+} ],
+"times": PoolRealArray( 0 )
+}
+
+[node name="MenuSfx" type="AnimationPlayer"]
+root_node = NodePath("AudioStreamPlayer")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/back = SubResource( 1 )
+anims/focus = SubResource( 2 )
+anims/select = SubResource( 3 )
+blend_times = [  ]
+script = ExtResource( 4 )
+parent_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+volume_db = 0.0
+pitch_scale = 1.0
+autoplay = false
+stream_paused = false
+mix_target = 0
+bus = "SFX"
+

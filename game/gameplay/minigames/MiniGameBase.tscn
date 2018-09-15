@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.gd" type="Script" id=1]
+
+[sub_resource type="GDScript" id=1]
+
+script/source = "tool
+extends Node2D
+
+export(bool) var enabled = true setget set_enabled
+
+func _draw():
+	if Engine.editor_hint and enabled:
+		draw_rect(Rect2(0, 2, 64, 43), Color(1, 0, 0, 0.2))
+
+func set_enabled(e):
+	enabled = e
+	call_deferred('update')
+"
+
+[node name="MiniGameBase" type="Node2D"]
+script = ExtResource( 1 )
+base_likes = 1
+time_bonus = 0
+hint = "Take!"
+notify_icon = 0
+good_comment = null
+bad_comment = null
+take_enabled = true
+camera_ = true
+comment_test = 0
+unique_name = null
+
+[node name="Margin" type="Node2D" parent="."]
+z_index = 2
+script = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+enabled = true
+
+[node name="Labels" type="CanvasLayer" parent="."]
+layer = 1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Animation" type="AnimationPlayer" parent="."]
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+blend_times = [  ]
+

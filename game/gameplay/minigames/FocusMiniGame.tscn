@@ -1,0 +1,112 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/minigames/FocusMiniGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/comments/akien-good.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/comments/akien-bad.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/labels/akien.png" type="Texture" id=5]
+[ext_resource path="res://assets/textures/minigames/focus/akien.png" type="Texture" id=6]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "minigame"
+length = 4.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite/Blur1:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3, 1.8, 2.2, 3.3, 3.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false, true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Blur2:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.6, 1.5, 2.6, 3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false, true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite/Blur3:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:take_enabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="FocusMiniGame" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+base_likes = 2650
+time_bonus = 500
+hint = "Focus!"
+good_comment = ExtResource( 3 )
+bad_comment = ExtResource( 4 )
+take_enabled = false
+unique_name = "FocusMiniGame"
+
+[node name="Sprite" type="Sprite" parent="Labels" index="0"]
+position = Vector2( 3, 5 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="Animation" parent="." index="2"]
+anims/minigame = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+
+[node name="Blur1" type="Sprite" parent="Sprite" index="0"]
+visible = false
+modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( 1, 0 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Blur2" type="Sprite" parent="Sprite" index="1"]
+visible = false
+modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( 2, 0 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility" ]
+
+[node name="Blur3" type="Sprite" parent="Sprite" index="2"]
+visible = false
+modulate = Color( 1, 1, 1, 0.5 )
+position = Vector2( 3, 0 )
+texture = ExtResource( 6 )
+centered = false
+_sections_unfolded = [ "Offset", "Visibility" ]
+

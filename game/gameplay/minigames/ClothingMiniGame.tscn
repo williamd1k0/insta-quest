@@ -1,0 +1,109 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/minigames/ClothingMiniGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/comments/clothing-good.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/comments/clothing-bad.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/labels/clothing.png" type="Texture" id=5]
+[ext_resource path="res://game/gameplay/Rect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/gameplay/minigames/clothing/Clothes.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/gameplay/minigames/clothing/Blue.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/gameplay/minigames/clothing/Green.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/gameplay/minigames/clothing/Orange.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/gameplay/minigames/clothing/Pink.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/gameplay/minigames/clothing/Purple.tscn" type="PackedScene" id=12]
+[ext_resource path="res://game/gameplay/minigames/clothing/Red.tscn" type="PackedScene" id=13]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "minigame"
+length = 8.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:take_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="ClothingMiniGame" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+base_likes = 1080
+time_bonus = 1920
+notify_icon = 1
+good_comment = ExtResource( 3 )
+bad_comment = ExtResource( 4 )
+take_enabled = false
+unique_name = "ClothingMiniGame"
+itens_ = NodePath("Clothes")
+
+[node name="Sprite" type="Sprite" parent="Labels" index="0"]
+position = Vector2( 43, 25 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Animation" parent="." index="2"]
+anims/minigame = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="." index="3"]
+position = Vector2( 32, 32 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Smoothing" ]
+
+[node name="Rect" parent="Camera" index="0" instance=ExtResource( 6 )]
+margin_left = -30.0
+margin_top = -32.0
+margin_right = 30.0
+margin_bottom = 23.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Clothes" type="Node2D" parent="." index="4"]
+
+[node name="Clothes" parent="Clothes" index="0" instance=ExtResource( 7 )]
+
+[node name="Clothes2" parent="Clothes" index="1" instance=ExtResource( 7 )]
+
+[node name="Clothes3" parent="Clothes" index="2" instance=ExtResource( 7 )]
+
+[node name="Blue" parent="Clothes" index="3" instance=ExtResource( 8 )]
+
+[node name="Green" parent="Clothes" index="4" instance=ExtResource( 9 )]
+
+[node name="Orange" parent="Clothes" index="5" instance=ExtResource( 10 )]
+
+[node name="Pink" parent="Clothes" index="6" instance=ExtResource( 11 )]
+
+[node name="Purple" parent="Clothes" index="7" instance=ExtResource( 12 )]
+
+[node name="Red" parent="Clothes" index="8" instance=ExtResource( 13 )]
+

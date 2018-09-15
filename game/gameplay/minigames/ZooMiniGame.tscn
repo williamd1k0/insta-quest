@@ -1,0 +1,131 @@
+[gd_scene load_steps=14 format=2]
+
+[ext_resource path="res://game/gameplay/minigames/MiniGameBase.tscn" type="PackedScene" id=1]
+[ext_resource path="res://game/gameplay/minigames/ZooMiniGame.gd" type="Script" id=2]
+[ext_resource path="res://assets/textures/comments/zoo-good.png" type="Texture" id=3]
+[ext_resource path="res://assets/textures/comments/zoo-bad.png" type="Texture" id=4]
+[ext_resource path="res://assets/textures/labels/zoo.png" type="Texture" id=5]
+[ext_resource path="res://game/gameplay/Rect.tscn" type="PackedScene" id=6]
+[ext_resource path="res://game/gameplay/minigames/zoo/Animal.tscn" type="PackedScene" id=7]
+[ext_resource path="res://game/gameplay/minigames/zoo/Giraffe.tscn" type="PackedScene" id=8]
+[ext_resource path="res://game/gameplay/minigames/zoo/Ostrich.tscn" type="PackedScene" id=9]
+[ext_resource path="res://game/gameplay/minigames/zoo/Gorilla.tscn" type="PackedScene" id=10]
+[ext_resource path="res://game/gameplay/minigames/zoo/Jovian.tscn" type="PackedScene" id=11]
+[ext_resource path="res://game/gameplay/minigames/zoo/Firefox.tscn" type="PackedScene" id=12]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "minigame"
+length = 7.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:take_enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
+
+[node name="ZooMiniGame" index="0" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+base_likes = 2368
+time_bonus = 600
+notify_icon = 1
+good_comment = ExtResource( 3 )
+bad_comment = ExtResource( 4 )
+take_enabled = false
+camera_ = false
+unique_name = "ZooMiniGame"
+itens_ = NodePath("Animals")
+
+[node name="Sprite" type="Sprite" parent="Labels" index="0"]
+position = Vector2( 44, 4 )
+texture = ExtResource( 5 )
+centered = false
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="Animation" parent="." index="2"]
+anims/minigame = SubResource( 1 )
+
+[node name="Camera" type="Camera2D" parent="." index="3"]
+editor/display_folded = true
+position = Vector2( 32, 32 )
+anchor_mode = 1
+rotating = false
+current = true
+zoom = Vector2( 1, 1 )
+limit_left = -10000000
+limit_top = -10000000
+limit_right = 10000000
+limit_bottom = 10000000
+limit_smoothed = false
+drag_margin_h_enabled = false
+drag_margin_v_enabled = false
+smoothing_enabled = true
+smoothing_speed = 5.0
+offset_v = 0.0
+offset_h = 0.0
+drag_margin_left = 0.2
+drag_margin_top = 0.2
+drag_margin_right = 0.2
+drag_margin_bottom = 0.2
+editor_draw_screen = true
+editor_draw_limits = false
+editor_draw_drag_margin = false
+_sections_unfolded = [ "Smoothing" ]
+
+[node name="Rect" parent="Camera" index="0" instance=ExtResource( 6 )]
+margin_left = -25.0
+margin_top = -30.0
+margin_right = 24.0
+margin_bottom = 17.0
+_sections_unfolded = [ "Rect" ]
+
+[node name="Animals" type="Node2D" parent="." index="4"]
+
+[node name="Animal" parent="Animals" index="0" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 0, 0, 1 )
+
+[node name="Animal2" parent="Animals" index="1" instance=ExtResource( 7 )]
+self_modulate = Color( 1, 0.913725, 0, 1 )
+
+[node name="Giraffe" parent="Animals" index="2" instance=ExtResource( 8 )]
+
+[node name="Ostrich" parent="Animals" index="3" instance=ExtResource( 9 )]
+
+[node name="Gorilla" parent="Animals" index="4" instance=ExtResource( 10 )]
+
+[node name="Jovian" parent="Animals" index="5" instance=ExtResource( 11 )]
+
+[node name="Firefox" parent="Animals" index="6" instance=ExtResource( 12 )]
+
+[node name="Bg" type="CanvasLayer" parent="." index="5"]
+editor/display_folded = true
+layer = -1
+offset = Vector2( 0, 0 )
+rotation = 0.0
+scale = Vector2( 1, 1 )
+transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+
+[node name="ColorRect" type="ColorRect" parent="Bg" index="0"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+color = Color( 0.372549, 0.803922, 0.894118, 1 )
+_sections_unfolded = [ "Rect" ]
+
